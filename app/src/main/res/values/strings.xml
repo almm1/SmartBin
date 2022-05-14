@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">smart_bin</string>
+    <string name="empty_field">Поле пустое</string>
 </resources>

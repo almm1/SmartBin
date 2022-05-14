@@ -1,22 +1,38 @@
 package com.example.smart_bin.presentation.ui.login
 
+import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.smart_bin.App
+import com.example.smart_bin.R
 import com.example.smart_bin.databinding.LoginFragmentBinding
 import com.example.smart_bin.presentation.base.BaseFragment
+import javax.inject.Inject
 
 class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> LoginFragmentBinding =
         LoginFragmentBinding::inflate
 
-    override val viewModel: LoginViewModel by viewModels()
+    override lateinit var viewModel: LoginViewModel
+
+    @Inject
+    lateinit var vmFactory: LoginViewModel.LoginViewModelFactory
 
     override fun setup() {
+        (requireActivity().application as App).appComponent.inject(this)
+
+        viewModel = ViewModelProvider(this, vmFactory)[LoginViewModel::class.java]
+
         binding.loginButton.setOnClickListener {
             val phoneNumber = binding.phoneNumberTextField.text.toString()
-            viewModel.onLoginButtonClick(phoneNumber, requireActivity())
+            if (phoneNumber.isBlank()) {
+                showToast(getString(R.string.empty_field))
+            } else {
+                viewModel.onLoginButtonClick(phoneNumber, requireActivity())
+            }
         }
     }
 }

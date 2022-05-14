@@ -19,7 +19,7 @@ abstract class BaseFragment<
     protected val binding get() = requireNotNull(_binding)
     abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> viewBinding
 
-    protected abstract val viewModel: vm
+    protected abstract var viewModel: vm
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +58,10 @@ abstract class BaseFragment<
             is NavigationCommand.ToDirection -> findNavController().navigate(navCommand.directions)
             is NavigationCommand.Back -> findNavController().navigateUp()
         }
+    }
+
+    fun showToast(text: String) {
+        Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
     }
 
     abstract fun setup()

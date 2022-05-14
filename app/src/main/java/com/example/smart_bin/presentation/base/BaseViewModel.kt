@@ -22,5 +22,7 @@ abstract class BaseViewModel : ViewModel() {
     fun navigateBack() {
         _navigation.value = Event(NavigationCommand.Back)
     }
-
+    fun showToast(text:String){
+        statusMessage.value = Event(text)
+    }
 }
