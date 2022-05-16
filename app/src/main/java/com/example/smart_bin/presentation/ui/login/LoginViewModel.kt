@@ -5,13 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.smart_bin.domain.usecases.authusecases.AuthUseCases
 import com.example.smart_bin.presentation.base.BaseViewModel
-import com.example.smart_bin.utils.Event
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.database.*
-import java.util.concurrent.TimeUnit
 
 class LoginViewModel(private val authUseCases: AuthUseCases) : BaseViewModel() {
 
@@ -30,31 +23,34 @@ class LoginViewModel(private val authUseCases: AuthUseCases) : BaseViewModel() {
             })
     }
 
-    private fun toRegistrationFragment(phoneNumber: String) {
-        navigate(LoginFragmentDirections.actionLoginFragmentToRegistrationFragment(phoneNumber))
-    }
-
     private fun sendCode(phoneNumber: String, activity: FragmentActivity) {
         authUseCases.firebaseSendCode.execute(phoneNumber, activity,
-            onVerificationCompleted = {},
             onVerificationFailed = { message ->
                 showToast(message)
             },
             onCodeSent = { id ->
-                navigate(
-                    LoginFragmentDirections.actionLoginFragmentToVerificationFragment(
-                        phoneNumber,
-                        id
-                    )
-                )
+                toVerificationFragment(phoneNumber, id)
             })
+    }
+
+    private fun toRegistrationFragment(phoneNumber: String) {
+        navigate(LoginFragmentDirections.actionLoginFragmentToRegistrationFragment(phoneNumber))
+    }
+
+    private fun toVerificationFragment(phoneNumber: String, id: String) {
+        navigate(
+            LoginFragmentDirections.actionLoginFragmentToVerificationFragment(
+                phoneNumber,
+                id,
+                null
+            )
+        )
     }
 
     class LoginViewModelFactory(
         private val authUseCases: AuthUseCases
     ) :
         ViewModelProvider.NewInstanceFactory() {
-
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return LoginViewModel(

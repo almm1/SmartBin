@@ -1,9 +1,7 @@
 package com.example.smart_bin.presentation.ui.login
 
-import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.smart_bin.App
 import com.example.smart_bin.R
@@ -22,8 +20,7 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
     lateinit var vmFactory: LoginViewModel.LoginViewModelFactory
 
     override fun setup() {
-        (requireActivity().application as App).appComponent.inject(this)
-
+        (requireActivity().application as App).appComponent.injectLogin(this)
         viewModel = ViewModelProvider(this, vmFactory)[LoginViewModel::class.java]
 
         binding.loginButton.setOnClickListener {
