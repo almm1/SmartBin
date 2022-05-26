@@ -7,7 +7,7 @@
     tools:context=".presentation.ui.registration.RegistrationFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/reg_phonenumber_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -23,7 +23,7 @@
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/load_logo_user_image" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/surname_text_field"
@@ -45,13 +45,13 @@
         app:layout_constraintTop_toBottomOf="@+id/surname_text_field" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/load_logo_user_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_phonenumber_text"
+        app:srcCompat="@drawable/ic_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

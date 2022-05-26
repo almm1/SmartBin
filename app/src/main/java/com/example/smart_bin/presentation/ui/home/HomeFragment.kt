@@ -1,5 +1,7 @@
 package com.example.smart_bin.presentation.ui.home
 
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.canhub.cropper.CropImage
+import com.canhub.cropper.CropImageContract
+import com.canhub.cropper.CropImageView
+import com.canhub.cropper.options
 import com.example.smart_bin.databinding.HomeFragmentBinding
 import com.example.smart_bin.domain.model.User
+import com.example.smart_bin.presentation.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -35,21 +42,24 @@ class HomeFragment : Fragment() {
 
         val phoneNumber = mAuth.currentUser?.phoneNumber.toString()
 
-        refDataBase.child("users").child(phoneNumber).addListenerForSingleValueEvent(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-               user = snapshot.getValue(User::class.java)?: User()
-            }
+        refDataBase.child("users").child(phoneNumber)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    user = snapshot.getValue(User::class.java) ?: User()
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireActivity(), error.message, Toast.LENGTH_SHORT).show()
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(requireActivity(), error.message, Toast.LENGTH_SHORT).show()
+                }
 
-        })
+            })
         binding.signOut.setOnClickListener {
             mAuth.signOut()
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWalkthroughFragment())
         }
+
     }
+
 
 
     override fun onDestroyView() {
