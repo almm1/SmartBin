@@ -1,27 +1,27 @@
 package com.example.smart_bin.presentation.ui.verification
 
+import androidx.annotation.NonNull
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.smart_bin.domain.usecases.authusecases.AuthUseCases
 import com.example.smart_bin.presentation.base.BaseViewModel
+import com.example.smart_bin.presentation.model.RegUser
 
 class VerificationViewModel(private val authUseCases: AuthUseCases) : BaseViewModel() {
 
     fun onVerifyButtonClick(
         code: String,
-        uid: String,
-        phoneNumber: String,
-        fullName: String?
+        regUser: RegUser
     ) {
-        verification(code, uid, phoneNumber, fullName)
+        verification(code, regUser)
     }
 
-    private fun verification(code: String, uid: String, phoneNumber: String, fullName: String?) {
+    private fun verification(code: String, regUser: RegUser) {
         authUseCases.firebaseSignInUseCase.execute(
-            uid,
+            regUser.id,
             code,
             onSuccess = {
-                signUp(fullName, phoneNumber)
+                signUp(regUser.full_name, regUser.phone, regUser.image)
                 toHomeFragment()
             },
             onFail = { showToast(it) }
@@ -32,9 +32,9 @@ class VerificationViewModel(private val authUseCases: AuthUseCases) : BaseViewMo
         navigate(VerificationFragmentDirections.actionVerificationFragmentToHomeFragment())
     }
 
-    private fun signUp(fullName: String?, phoneNumber: String) {
-        if (fullName != null) {
-            authUseCases.firebaseSignUpUseCase.execute(phoneNumber, fullName)
+    private fun signUp(fullName: String?, phoneNumber: String, image:String?) {
+        if (!fullName.isNullOrEmpty()) {
+            authUseCases.firebaseSignUpUseCase.execute(phoneNumber, fullName, image)
         }
     }
 

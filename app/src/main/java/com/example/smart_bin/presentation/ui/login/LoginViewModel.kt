@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.smart_bin.domain.usecases.authusecases.AuthUseCases
 import com.example.smart_bin.presentation.base.BaseViewModel
+import com.example.smart_bin.presentation.model.RegUser
 
 class LoginViewModel(private val authUseCases: AuthUseCases) : BaseViewModel() {
 
@@ -40,9 +41,7 @@ class LoginViewModel(private val authUseCases: AuthUseCases) : BaseViewModel() {
     private fun toVerificationFragment(phoneNumber: String, id: String) {
         navigate(
             LoginFragmentDirections.actionLoginFragmentToVerificationFragment(
-                phoneNumber,
-                id,
-                null
+                RegUser(id = id, phone = phoneNumber)
             )
         )
     }

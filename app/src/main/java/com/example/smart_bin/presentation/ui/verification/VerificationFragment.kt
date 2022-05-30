@@ -28,15 +28,11 @@ class VerificationFragment : BaseFragment<VerificationtFragmentBinding, Verifica
 
         binding.verifyButton.setOnClickListener {
             val code = binding.codeTextField.text.toString()
-            val uid = args.id
-            val phoneNumber = args.phoneNumber
-            val fullName = args.fullname
+            val regUser = args.regUser
 
             viewModel.onVerifyButtonClick(
                 code,
-                uid,
-                phoneNumber,
-                fullName
+                regUser
             )
         }
     }

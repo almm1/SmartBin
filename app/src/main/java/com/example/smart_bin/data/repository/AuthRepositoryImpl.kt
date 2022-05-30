@@ -1,5 +1,6 @@
 package com.example.smart_bin.data.repository
 
+import android.net.Uri
 import androidx.fragment.app.FragmentActivity
 import com.example.smart_bin.domain.repository.AuthRepository
 import com.example.smart_bin.utils.AppValueEventListener
@@ -10,6 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -17,7 +19,8 @@ import kotlinx.coroutines.flow.flow
 
 class AuthRepositoryImpl(
     private val mAuth: FirebaseAuth,
-    private val database: FirebaseDatabase
+    private val database: FirebaseDatabase,
+    private val storage: FirebaseStorage
 ) : AuthRepository {
 
 
@@ -61,8 +64,9 @@ class AuthRepositoryImpl(
         signInWithCredential(credential, onSuccess, onFail)
     }
 
-    override fun signUp(phoneNumber: String, fullName: String) {
+    override fun signUp(phoneNumber: String, fullName: String, image: String?) {
         val refDataBase = database.reference
+        val refStorage = storage.reference
 
         val uid = mAuth.currentUser?.uid.toString()
         val userData = mutableMapOf<String, Any>()
@@ -76,6 +80,15 @@ class AuthRepositoryImpl(
 //
 //                }
             }
+
+        if (!image.isNullOrEmpty()) {
+            val path = refStorage.child("userImage").child(uid)
+            path.putFile(Uri.parse(image)).addOnCompleteListener {
+                if(it.isSuccessful){
+
+                }
+            }
+        }
     }
 
     private fun signInWithCredential(

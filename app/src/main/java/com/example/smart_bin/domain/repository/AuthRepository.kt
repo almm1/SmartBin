@@ -27,5 +27,5 @@ interface AuthRepository {
         onFail: (String) -> Unit
     )
 
-    fun signUp(phoneNumber: String, fullName: String)
+    fun signUp(phoneNumber: String, fullName: String, image: String?)
 }

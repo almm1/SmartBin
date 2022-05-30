@@ -57,15 +57,8 @@
             app:popUpTo="@id/verificationFragment"
             app:popUpToInclusive="true" />
         <argument
-            android:name="phone_number"
-            app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="fullname"
-            app:argType="string"
-            app:nullable="true"/>
+            android:name="regUser"
+            app:argType="com.example.smart_bin.presentation.model.RegUser" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"

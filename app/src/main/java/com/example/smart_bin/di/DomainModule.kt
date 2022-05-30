@@ -9,6 +9,7 @@ import com.example.smart_bin.domain.usecases.GetNewsListUseCase
 import com.example.smart_bin.domain.usecases.authusecases.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -41,8 +42,12 @@ class DomainModule {
 
     @Singleton
     @Provides
-    fun provideAuthRepository(auth: FirebaseAuth, database: FirebaseDatabase): AuthRepository {
-        return AuthRepositoryImpl(auth, database)
+    fun provideAuthRepository(
+        auth: FirebaseAuth,
+        database: FirebaseDatabase,
+        storage: FirebaseStorage
+    ): AuthRepository {
+        return AuthRepositoryImpl(auth, database, storage)
     }
 
 }

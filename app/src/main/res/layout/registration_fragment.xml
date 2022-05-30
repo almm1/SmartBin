@@ -46,9 +46,10 @@
 
     <ImageView
         android:id="@+id/load_logo_user_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_marginTop="36dp"
+        app:circularflow_angles="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_phonenumber_text"

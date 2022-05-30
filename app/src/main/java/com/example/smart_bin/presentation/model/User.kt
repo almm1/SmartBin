@@ -1,5 +1,4 @@
-package com.example.smart_bin.domain.model
-
+package com.example.smart_bin.presentation.model
 
 data class User(
     val id: String="",
