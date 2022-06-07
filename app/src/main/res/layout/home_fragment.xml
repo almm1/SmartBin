@@ -6,13 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.home.HomeFragment">
 
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/custom_app_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:gravity="clip_horizontal|center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="24sp" />
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/logo_user"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/ic_user"
+            app:civ_border_color="@color/green_base"
+            app:civ_border_width="1dp" />
+    </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -22,6 +50,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signOut" />
+        app:layout_constraintTop_toBottomOf="@+id/custom_app_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

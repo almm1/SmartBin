@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/launchFragment">
+    app:startDestination="@id/walkthroughFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -16,26 +16,11 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/launchFragment"
-        android:name="com.example.smart_bin.presentation.ui.LaunchFragment"
-        android:label="LaunchFragment" >
-        <action
-            android:id="@+id/action_launchFragment_to_loginFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/launchFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_launchFragment_to_walkthroughFragment"
-            app:destination="@id/walkthroughFragment"
-            app:popUpTo="@id/launchFragment"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/walkthroughFragment"
@@ -54,7 +39,7 @@
         <action
             android:id="@+id/action_verificationFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/verificationFragment"
+            app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
         <argument
             android:name="regUser"
@@ -66,10 +51,8 @@
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
         <action
-            android:id="@+id/action_homeFragment_to_walkthroughFragment"
-            app:destination="@id/walkthroughFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -83,4 +66,49 @@
             android:id="@+id/action_registrationFragment_to_verificationFragment"
             app:destination="@id/verificationFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.smart_bin.presentation.ui.map.MapFragment"
+        android:label="map_fragment"
+        tools:layout="@layout/map_fragment" />
+    <fragment
+        android:id="@+id/bonusesFragment"
+        android:name="com.example.smart_bin.presentation.ui.bonuses.BonusesFragment"
+        android:label="bonuses_fragment"
+        tools:layout="@layout/bonuses_fragment"/>
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_bonusesFragment"
+        app:destination="@id/bonusesFragment"
+        app:popUpTo="@id/walkthroughFragment"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.smart_bin.presentation.ui.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profile_to_walkthroughFragment"
+            app:destination="@id/walkthroughFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_bonusesFragment"
+            app:destination="@id/bonusesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.smart_bin.presentation.ui.help.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
 </navigation>

@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="24dp"
-    android:paddingTop="12dp"
-    android:paddingEnd="24dp"
-    android:paddingBottom="12dp">
+    android:paddingStart="24dp">
 
     <TextView
         android:id="@+id/title_text"
+        style="@style/small_normal_bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
         android:ellipsize="end"
         android:maxLines="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/logo_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/logo_image" />
 
     <ImageView
         android:id="@+id/logo_image"
@@ -30,15 +29,31 @@
 
     <TextView
         android:id="@+id/date_pub_text"
+        style="@style/tiny_normal_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/logo_image"
         app:layout_constraintStart_toStartOf="@+id/title_text" />
 
     <TextView
         android:id="@+id/source_text"
+        style="@style/tiny_normal_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/date_pub_text"
         app:layout_constraintTop_toTopOf="@+id/date_pub_text" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/date_pub_text"
+        app:layout_constraintTop_toBottomOf="@+id/logo_image" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,16 +6,16 @@ import com.example.smart_bin.domain.repository.AuthRepository
 import com.example.smart_bin.utils.AppValueEventListener
 import com.example.smart_bin.utils.Response
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.*
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
-import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
+import java.util.concurrent.TimeUnit
 
 class AuthRepositoryImpl(
     private val mAuth: FirebaseAuth,
@@ -75,19 +75,10 @@ class AuthRepositoryImpl(
         userData["id"] = uid
 
         refDataBase.child("users").child(phoneNumber).updateChildren(userData)
-            .addOnCompleteListener {
-//                if (it.isSuccessful) {
-//
-//                }
-            }
 
         if (!image.isNullOrEmpty()) {
             val path = refStorage.child("userImage").child(uid)
-            path.putFile(Uri.parse(image)).addOnCompleteListener {
-                if(it.isSuccessful){
-
-                }
-            }
+            path.putFile(Uri.parse(image))
         }
     }
 
@@ -99,11 +90,24 @@ class AuthRepositoryImpl(
         mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 onSuccess()
+                loadToken()
             } else {
                 onFail(task.exception.toString())
             }
         }
     }
+
+    private fun loadToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val token = task.result
+                val dataToken = mutableMapOf<String, Any>()
+                dataToken[token] = mAuth.currentUser?.uid.toString()
+                database.reference.child("tokens").updateChildren(dataToken)
+            }
+        }
+    }
+
 
     override fun sendCode(
         phoneNumber: String,

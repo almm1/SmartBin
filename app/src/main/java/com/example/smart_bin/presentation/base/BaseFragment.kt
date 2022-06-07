@@ -66,6 +66,7 @@ abstract class BaseFragment<
 
     abstract fun setup()
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

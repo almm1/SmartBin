@@ -12,20 +12,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("TAG", "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
-
-            // Get new FCM registration token
-            val token = task.result
-
-            // Log and toast
-            Log.d("TAG", token)
-//            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-        })
-
         appComponent = DaggerAppComponent.create()
     }
 }

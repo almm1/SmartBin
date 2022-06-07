@@ -30,10 +30,10 @@ class NewsFragment : BaseFragment<NewsFragmentBinding, NewsViewModel>() {
         adapter = NewsAdapter(requireContext())
         binding.newsRecyclerView.adapter = adapter
 
-//        lifecycleScope.launch {
-//            viewModel.news.collectLatest { pagedData ->
-//                adapter.submitData(pagedData)
-//            }
-//        }
+        lifecycleScope.launch {
+            viewModel.news.collectLatest { pagedData ->
+                adapter.submitData(pagedData)
+            }
+        }
     }
 }

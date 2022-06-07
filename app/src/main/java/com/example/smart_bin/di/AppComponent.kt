@@ -1,5 +1,7 @@
 package com.example.smart_bin.di
 
+import com.example.smart_bin.presentation.ui.bonuses.BonusesFragment
+import com.example.smart_bin.presentation.ui.home.HomeFragment
 import com.example.smart_bin.presentation.ui.news.NewsFragment
 import com.example.smart_bin.presentation.ui.login.LoginFragment
 import com.example.smart_bin.presentation.ui.registration.RegistrationFragment
@@ -14,4 +16,6 @@ interface AppComponent {
     fun injectVerification(verificationFragment: VerificationFragment)
     fun injectRegistration(registrationFragment: RegistrationFragment)
     fun injectNews(newsFragment: NewsFragment)
+    fun injectHome(homeFragment: HomeFragment)
+    fun injectBonuses(bonusesFragment: BonusesFragment)
 }

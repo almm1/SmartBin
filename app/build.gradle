@@ -58,7 +58,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 //firebase
-    implementation platform('com.google.firebase:firebase-bom:30.0.0')
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
@@ -82,4 +82,6 @@ dependencies {
 
     // This library is used for crop image feature
     implementation 'com.github.CanHub:Android-Image-Cropper:4.2.1'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

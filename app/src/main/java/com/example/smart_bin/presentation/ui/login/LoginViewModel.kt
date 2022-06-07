@@ -57,5 +57,4 @@ class LoginViewModel(private val authUseCases: AuthUseCases) : BaseViewModel() {
             ) as T
         }
     }
-
 }

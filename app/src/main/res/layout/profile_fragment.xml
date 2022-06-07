@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="24dp"
+    tools:context=".presentation.ui.profile.ProfileFragment">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo_user"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_user"
+        app:civ_border_color="@color/green_base"
+        app:civ_border_width="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fullname_text"
+        style="@style/title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/logo_user"
+        app:layout_constraintStart_toEndOf="@+id/logo_user"
+        app:layout_constraintTop_toTopOf="@+id/logo_user"
+        app:layout_constraintVertical_bias="0.110000014"
+        tools:text="Ivan Ivanov" />
+
+    <TextView
+        android:id="@+id/phonenumber_text"
+        style="@style/regular_normal_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/fullname_text"
+        app:layout_constraintTop_toBottomOf="@+id/fullname_text"
+        tools:text="+16501234567" />
+
+    <Button
+        android:id="@+id/view_profile_button"
+        style="@style/light_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/view_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_user" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_profile_button">
+
+        <LinearLayout
+            android:id="@+id/bonus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_bonus" />
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/bonuses" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_map" />
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/map" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stats"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_stats" />
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/stats" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qusts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_quest" />
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/quests" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_help" />
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/help" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/about" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/signOut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                style="@style/regular_tight_regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sign_out" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,62 +1,41 @@
 package com.example.smart_bin.presentation.ui.home
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.smart_bin.App
 import com.example.smart_bin.databinding.HomeFragmentBinding
-import com.example.smart_bin.presentation.model.User
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.example.smart_bin.presentation.base.BaseFragment
+import com.example.smart_bin.presentation.model.user
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import javax.inject.Inject
 
-class HomeFragment : Fragment() {
-    private var _binding: HomeFragmentBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var refDataBase: DatabaseReference
+class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = HomeFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> HomeFragmentBinding =
+        HomeFragmentBinding::inflate
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override lateinit var viewModel: HomeViewModel
 
-        mAuth = FirebaseAuth.getInstance()
-        refDataBase = FirebaseDatabase.getInstance().reference
-        var user: User
+    @Inject
+    lateinit var vmFactory: HomeViewModel.HomeViewModelFactory
 
-        val phoneNumber = mAuth.currentUser?.phoneNumber.toString()
+    override fun setup() {
+        (requireActivity().application as App).appComponent.injectHome(this)
+        viewModel = ViewModelProvider(this, vmFactory)[HomeViewModel::class.java]
 
-        refDataBase.child("users").child(phoneNumber)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    user = snapshot.getValue(User::class.java) ?: User()
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(requireActivity(), error.message, Toast.LENGTH_SHORT).show()
-                }
-
-            })
-        binding.signOut.setOnClickListener {
-            mAuth.signOut()
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWalkthroughFragment())
+        viewModel.initUser {
+            if (user.icon.isNotEmpty()) {
+                Glide.with(requireContext())
+                    .load(user.icon)
+                    .into(binding.logoUser)
+            }
         }
-
-    }
-
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        binding.logoUser.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+        }
     }
 }

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_text_field1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="1"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusLeft="@id/code_text_field1"
+            android:nextFocusRight="@id/code_text_field2" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_text_field2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="1"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusLeft="@id/code_text_field1"
+            android:nextFocusRight="@id/code_text_field3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_text_field3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusLeft="@id/code_text_field2"
+            android:nextFocusRight="@id/code_text_field4" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_text_field4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="1"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusLeft="@id/code_text_field3"
+            android:nextFocusRight="@id/code_text_field5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_text_field5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="1"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusLeft="@id/code_text_field4"
+            android:nextFocusRight="@id/code_text_field6" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_text_field6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="1"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusLeft="@id/code_text_field5"
+            android:nextFocusRight="@id/code_text_field6" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

@@ -9,7 +9,7 @@ import com.example.smart_bin.presentation.base.BaseViewModel
 
 class NewsViewModel(private val getNewsListUseCase: GetNewsListUseCase) : BaseViewModel() {
 
-//    val news = getNewsListUseCase.execute().cachedIn(viewModelScope)
+    val news = getNewsListUseCase.execute().cachedIn(viewModelScope)
 
     class NewsViewModelFactory(
         private val getNewsListUseCase: GetNewsListUseCase

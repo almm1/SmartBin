@@ -1,4 +1,31 @@
 <resources>
-    <string name="app_name">smart_bin</string>
+    <string name="app_name">Smart Bin</string>
     <string name="empty_field">Поле пустое</string>
+    <string name="start">Начать</string>
+    <string name="continue_text">Продолжить</string>
+    <string name="input_code">Введите код подтверждения</string>
+    <string name="login">Войти</string>
+    <string name="sms">Вы получите SMS с кодом подтверждения, может взиматься плата по тарифам за передачу сообщений</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="login_in_your_account">Войдите в свой аккаунт</string>
+    <string name="with_return">С возвращением</string>
+    <string name="click_for_select_image">Нажмите для выбора изображения</string>
+    <string name="signup">Зарегестрироваться</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="self_clean">Соблюдай чистоту - получай бонусы</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="view_profile">Посмотреть профиль</string>
+    <string name="bonuses">Бонусы</string>
+    <string name="map">Карта</string>
+    <string name="stats">Статистика</string>
+    <string name="quests">Квесты</string>
+    <string name="help">Помощь</string>
+    <string name="about">О нас</string>
+    <string name="sign_out">Выход</string>
+    <string name="new_bonus">У вас новый бонус</string>
+    <string name="view">Посмотреть</string>
+    <string name="ok">Oк</string>
+    <string name="empty_bonuses">Бонусов нет</string>
+
 </resources>
